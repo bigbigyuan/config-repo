@@ -4,7 +4,10 @@ server:
 spring:
   application:
     name: order-service
-
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
 eureka:
   instance:
     prefer-ip-address: true #是否使用ip地址注册
@@ -15,3 +18,11 @@ eureka:
 
 name: order-service-dev-0.2
 password: '{cipher}AQAPyAJwg74THN51qBYIAQO4rDrFh8RqRC+Bmw6seBr07g+u5H8PRulVwGXG6F7vpqwQ0BqDUYgVdDIizgXIaaqTvsVOPBp3yl3935SEv92cyL2tLl2lpfRJMLC5LwwD6m56Kv5CGlf/mXeOTj7lXKaUiq394PM8UjUUMopDJKDlX8TvZ7HBfTHCO+L3MFwfMbILU35Nd/GMU8dWnq2LlktpmXWClXkH/yCkkay79T9l8YPKU/8Pr0YOS1k/gli9Enr70/IegclyiPrucjuytMnSOyI7teon6624u/tYWTASByICE4pEFRUumBbF+H/vTqfF5dKk7lN3NpdyiCEklbgpIGlpBBlz0/gRgV7/IUfKugvc6IHvmoozb94vEe9eyhk='
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator #访问端点根路径 默认为/actuator
+      exposure:
+        include: '*' #需要开启的端点，这里主要用到refresh这个端点
+        #exclude:
